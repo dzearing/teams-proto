@@ -1,14 +1,14 @@
-import { IStyles, IPersonaProps } from "office-ui-fabric-react";
+import { IStyle, IPersonaProps } from "office-ui-fabric-react";
 
 export interface IChatTileStyles {
-  root: IStyles;
-  thumbArea: IStyles;
-  textArea: IStyles;
-  name: IStyles;
-  lastMessage: IStyles;
-  lastModified: IStyles;
-  subTextArea: IStyles;
-  moreIcon: IStyles;
+  root: IStyle;
+  thumbArea: IStyle;
+  textArea: IStyle;
+  name: IStyle;
+  lastMessage: IStyle;
+  lastModified: IStyle;
+  subTextArea: IStyle;
+  moreIcon: IStyle;
 }
 
 export interface IChatTileProps {

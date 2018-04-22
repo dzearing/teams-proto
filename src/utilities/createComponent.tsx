@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { mergeStyleSets, getTheme } from 'office-ui-fabric-react';
+import * as React from "react";
+import { mergeStyleSets, getTheme } from "office-ui-fabric-react";
 
 export type IStyleFunction<TStylesProps, TStyles> = (
   props: TStylesProps
@@ -11,10 +11,10 @@ export interface IComponentOptions<
   TUserProps,
   TStyles,
   TViewProps = TUserProps
-> {
+  > {
   scope: string;
   state?: React.ComponentType<TUserProps>;
-  styles?: IStyleFunction<TViewProps, TStyles>;
+  styles?: IStyleFunction<TViewProps, TStyles> | Partial<TStyles>;
   view?: React.ComponentType<TViewProps>;
 }
 
@@ -30,19 +30,31 @@ export function createComponent<TProps, TStyles>(
     const theme = getTheme();
 
     ViewComponent.displayName =
-      ViewComponent.displayName || options.scope + 'View';
+      ViewComponent.displayName || options.scope + "View";
     const content = (processedProps: TProps) => {
-      const styles =
-        getStyles && mergeStyleSets(getStyles({ theme, ...processedProps }));
+      let styles: TStyles | undefined = undefined;
 
-      return <ViewComponent {...processedProps} styles={styles} />;
+      switch (typeof getStyles) {
+        case "function":
+          styles = getStyles({ theme, ...(processedProps as {}) });
+          break;
+        case "object":
+          styles = getStyles;
+          break;
+        default:
+          break;
+      }
+
+      return (
+        <ViewComponent { ...processedProps } styles={ mergeStyleSets(styles) } />
+      );
     };
 
     return !!StateComponent ? (
-      <StateComponent>{content}</StateComponent>
+      <StateComponent>{ content }</StateComponent>
     ) : (
-      content(userProps)
-    );
+        content(userProps)
+      );
   };
 
   result.displayName = options.scope;

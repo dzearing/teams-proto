@@ -1,18 +1,17 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   ITheme,
   IStyle,
   getNativeProps,
   getFocusStyle,
   buttonProperties
-} from 'office-ui-fabric-react';
-import { createComponent } from '../../utilities/createComponent';
+} from "office-ui-fabric-react";
+import { createComponent, IStylesFor } from "../../utilities";
 
 export interface IRoundButtonProps {
   as?: string;
   className?: string;
-
-  emphasized?: boolean;
+  primary?: boolean;
 }
 
 export interface IRoundButtonStyles {
@@ -20,48 +19,44 @@ export interface IRoundButtonStyles {
 }
 
 export const view = (
-  props: IRoundButtonProps & {
-    styles: { [key in keyof IRoundButtonStyles]: string };
-  }
+  props: IRoundButtonProps & IStylesFor<IRoundButtonStyles>
 ): JSX.Element => {
-  const { as: RootTag = 'button', styles } = props;
+  const { as: RootTag = "button", styles } = props;
   const nativeProps = getNativeProps(props, buttonProperties);
 
   return <RootTag {...nativeProps} className={styles.root} />;
 };
 
-export const styles = (
+export const getStyles = (
   props: IRoundButtonProps & { theme: ITheme }
 ): IRoundButtonStyles => {
-  const { className, theme, emphasized } = props;
+  const { className, theme, primary } = props;
   const { palette } = theme;
 
   return {
     root: [
       getFocusStyle(theme, -4),
       {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         width: 30,
         height: 30,
         fontSize: 14,
-        backgroundColor: emphasized ? palette.themePrimary : 'inherit',
-        borderColor: emphasized
-          ? palette.themePrimary
-          : palette.neutralSecondary,
-        color: emphasized ? theme.palette.white : 'inherit',
-        borderRadius: '50%',
+        backgroundColor: primary ? palette.themePrimary : "inherit",
+        borderColor: primary ? palette.themePrimary : palette.neutralSecondary,
+        color: primary ? theme.palette.white : "inherit",
+        borderRadius: "50%",
         borderWidth: 1,
-        borderStyle: 'solid',
-        outline: 'none',
+        borderStyle: "solid",
+        outline: "none",
 
         selectors: {
-          ':hover': {
-            backgroundColor: emphasized ? palette.themeDark : palette.themeLight
+          ":hover": {
+            backgroundColor: primary ? palette.themeDark : palette.themeLight
           },
 
-          '&:active': {
+          "&:active": {
             borderColor: palette.themeSecondary,
             backgroundColor: palette.themeSecondary,
             color: palette.neutralLight
@@ -77,7 +72,7 @@ export const RoundButton = createComponent<
   IRoundButtonProps,
   IRoundButtonStyles
 >({
-  scope: 'RoundButton',
-  styles,
+  scope: "RoundButton",
+  styles: getStyles,
   view
 });

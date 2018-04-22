@@ -9,8 +9,8 @@ import {
 export const AccordionTitle = createComponent<
   IAccordionTitleProps,
   IAccordionTitleStyles
->({
-  scope: "AccordionTitle",
-  view,
-  styles
-});
+  >({
+    scope: "AccordionTitle",
+    view,
+    styles
+  });

@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { ITheme, IStyle, FontWeights } from 'office-ui-fabric-react';
-import { createComponent } from '../../utilities/createComponent';
+import * as React from "react";
+import { ITheme, IStyle, FontWeights } from "office-ui-fabric-react";
+import { createComponent } from "../../utilities/createComponent";
 
 export interface IDividerProps {
   className?: string;
@@ -33,7 +33,7 @@ export const view = (
   }
 };
 
-export const styles = (
+export const getStyles = (
   props: IDividerProps & { theme: ITheme }
 ): IDividerStyles => {
   const { className, theme, text, emphasized } = props;
@@ -46,7 +46,7 @@ export const styles = (
     flexGrow: 1,
     margin: 0,
     padding: 0,
-    border: 'none',
+    border: "none",
     height: 1, // emphasized ? 2 : 1,
     background: ForegroundColor
   };
@@ -56,10 +56,10 @@ export const styles = (
       !text && HorizontalDividerStyle,
 
       !!text && {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'stretch',
-        width: '100%'
+        display: "flex",
+        alignItems: "center",
+        // justifyContent: "stretch",
+        width: "100%"
       },
       className
     ],
@@ -67,16 +67,16 @@ export const styles = (
     text: [
       theme.fonts.small,
       {
-        margin: '0 12px',
+        margin: "0 12px",
         color: ForegroundColor,
-        fontWeight: emphasized ? FontWeights.bold : FontWeights.normal
+        fontWeight: emphasized ? FontWeights.bold : FontWeights.regular
       }
     ]
   };
 };
 
 export const Divider = createComponent<IDividerProps, IDividerStyles>({
-  scope: 'Divider',
-  styles,
+  scope: "Divider",
+  styles: getStyles,
   view
 });

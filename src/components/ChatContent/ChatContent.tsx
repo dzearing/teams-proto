@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { ITheme, IStyle, TextField } from 'office-ui-fabric-react';
-import { createComponent } from '../../utilities/createComponent';
-import { ChatContentHeader } from './ChatContentHeader';
-import { ChatContentList } from './ChatContentList';
+import * as React from "react";
+import { ITheme, IStyle, TextField } from "office-ui-fabric-react";
+import { createComponent } from "../../utilities/createComponent";
+import { ChatContentHeader } from "./ChatContentHeader";
+import { ChatContentList } from "./ChatContentList";
 
 export interface IChatContentProps {
   className?: string;
@@ -22,25 +22,25 @@ export const view = (
   const { styles } = props;
 
   return (
-    <div className={styles.root}>
-      <ChatContentHeader className={styles.header} />
-      <ChatContentList className={styles.list} />
-      <div className={styles.textField}>
+    <div className={ styles.root }>
+      <ChatContentHeader className={ styles.header } />
+      <ChatContentList className={ styles.list } />
+      <div className={ styles.textField }>
         <TextField placeholder="Type a new message" underlined />
       </div>
     </div>
   );
 };
 
-export const styles = (
+export const getStyles = (
   props: IChatContentProps & { theme: ITheme }
 ): IChatContentStyles => {
   return {
     root: [
       {
         background: props.theme.palette.neutralLighter,
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         minHeight: 0
       },
       props.className
@@ -48,20 +48,21 @@ export const styles = (
     header: [
       {
         flexShrink: 0,
-        padding: '0 20px'
+        padding: "0 20px"
       }
     ],
     list: [
       {
         flexGrow: 1,
-        overflow: 'hidden'
+        overflowX: "hidden",
+        overflowY: "scroll"
       }
     ],
     textField: [
       {
         flexShrink: 0,
-        padding: '0 20px',
-        margin: '20px 0'
+        padding: "0 20px",
+        margin: "20px 0"
       }
     ]
   };
@@ -70,8 +71,8 @@ export const styles = (
 export const ChatContent = createComponent<
   IChatContentProps,
   IChatContentStyles
->({
-  scope: 'ChatContent',
-  styles,
-  view
-});
+  >({
+    scope: "ChatContent",
+    styles: getStyles,
+    view
+  });

@@ -1,7 +1,8 @@
 import { getFocusStyle, ITheme, FontWeights } from "office-ui-fabric-react";
 import { IChatTileProps, IChatTileStyles } from "./ChatTile.types";
+import { IRawStyleBase } from "@uifabric/merge-styles/lib/IRawStyleBase";
 
-const SingleLineText = {
+const SingleLineText: IRawStyleBase = {
   whiteSpace: "nowrap",
   overflow: "hidden",
   textOverflow: "ellipsis",
@@ -65,7 +66,7 @@ export const getStyles = (
     ],
     subTextArea: {
       display: "flex",
-      flexSrink: 0,
+      flexShrink: 0,
       flexDirection: "column",
       alignItems: "flex-end",
       textAlign: "right",

@@ -1,12 +1,13 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   ITheme,
   IStyle,
   getNativeProps,
   divProperties,
   createRef
-} from 'office-ui-fabric-react';
-import { createComponent } from '../../utilities/createComponent';
+} from "office-ui-fabric-react";
+import { createComponent } from "../../utilities/createComponent";
+import { IRawStyleBase } from "@uifabric/merge-styles/lib/IRawStyleBase";
 
 export interface IScrollViewProps extends React.HTMLAttributes<HTMLElement> {
   horizontal?: boolean;
@@ -31,7 +32,7 @@ class ScrollViewComponent extends React.PureComponent<
     top: number;
     drag?: { x: number; y: number };
   }
-> {
+  > {
   private _scrollElement = createRef<HTMLDivElement>();
 
   constructor(props: IScrollViewPropsWithStyles) {
@@ -48,21 +49,21 @@ class ScrollViewComponent extends React.PureComponent<
     const { height, top } = this.state;
 
     return (
-      <div {...nativeProps} className={styles.root}>
+      <div { ...nativeProps } className={ styles.root }>
         <div
-          className={styles.scrollArea}
-          ref={this._scrollElement}
-          onScroll={this._updateScrollSize}
+          className={ styles.scrollArea }
+          ref={ this._scrollElement }
+          onScroll={ this._updateScrollSize }
         >
-          {children}
+          { children }
         </div>
 
-        <div className={styles.scrollTrack}>
+        <div className={ styles.scrollTrack }>
           <div
-            className={styles.scrollThumb}
-            style={{ height, transform: `translateY(${top}px)` }}
-            onMouseDown={this._onMouseDown}
-            onMouseUp={this._onMouseUp}
+            className={ styles.scrollThumb }
+            style={ { height, transform: `translateY(${top}px)` } }
+            onMouseDown={ this._onMouseDown }
+            onMouseUp={ this._onMouseUp }
           />
         </div>
       </div>
@@ -89,7 +90,7 @@ class ScrollViewComponent extends React.PureComponent<
         height
       });
     }
-  };
+  }
 
   private _onMouseDown = (ev: React.MouseEvent<Element>) => {
     this.setState({
@@ -99,24 +100,24 @@ class ScrollViewComponent extends React.PureComponent<
         y: ev.clientY
       }
     });
-  };
+  }
 
   private _onMouseUp = () => {
     this.setState({
       drag: undefined
     });
-  };
+  }
 }
 
-const FillAreaStyle = {
-  position: 'absolute',
+const FillAreaStyle: IRawStyleBase = {
+  position: "absolute",
   top: 0,
   left: 0,
-  width: '100%',
-  height: '100%'
+  width: "100%",
+  height: "100%"
 };
 
-export const styles = (
+export const getStyles = (
   props: IScrollViewProps & { theme: ITheme }
 ): IScrollViewStyles => {
   const { className, horizontal, vertical, theme } = props;
@@ -124,7 +125,7 @@ export const styles = (
   return {
     root: [
       {
-        position: 'relative'
+        position: "relative"
       },
       className
     ],
@@ -132,11 +133,11 @@ export const styles = (
     scrollArea: [
       FillAreaStyle,
       {
-        WebkitOverflowScrolling: 'touch',
-        overflowX: horizontal ? 'scroll' : 'hidden',
-        overflowY: vertical ? 'scroll' : 'hidden',
+        WebkitOverflowScrolling: "touch",
+        overflowX: horizontal ? "scroll" : "hidden",
+        overflowY: vertical ? "scroll" : "hidden",
         selectors: {
-          '::-webkit-scrollbar': {
+          "::-webkit-scrollbar": {
             width: 0
           }
         }
@@ -145,36 +146,36 @@ export const styles = (
     ],
 
     scrollTrack: {
-      position: 'absolute',
+      position: "absolute",
       top: 0,
       right: 0,
       width: 16,
-      height: '100%',
-      backgroundColor: 'transparent',
+      height: "100%",
+      backgroundColor: "transparent",
       zIndex: 1
     },
 
     scrollThumb: {
-      position: 'absolute',
-      top: '0%',
+      position: "absolute",
+      top: "0%",
       left: 5,
       borderRadius: 3,
       width: 6,
       background: theme.palette.neutralTertiary,
       minHeight: 16,
       opacity: 0,
-      transition: 'left .2s, width .2s, border-radius .2s, opacity 1s',
+      transition: "left .2s, width .2s, border-radius .2s, opacity 1s",
 
       selectors: {
-        '$scrollTrack:hover &': {
+        "$scrollTrack:hover &": {
           left: 2,
           width: 12,
           borderRadius: 6,
           opacity: 1
         },
-        '$root:hover &': {
+        "$root:hover &": {
           opacity: 0.6,
-          transition: 'left .2s, width .2s, border-radius .2s, opacity .2s'
+          transition: "left .2s, width .2s, border-radius .2s, opacity .2s"
         }
       }
     }
@@ -182,7 +183,7 @@ export const styles = (
 };
 
 export const ScrollView = createComponent<IScrollViewProps, IScrollViewStyles>({
-  scope: 'ScrollView',
-  styles,
+  scope: "ScrollView",
+  styles: getStyles,
   view: ScrollViewComponent
 });

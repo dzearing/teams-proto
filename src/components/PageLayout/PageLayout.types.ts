@@ -1,6 +1,6 @@
-import { IStyle } from 'office-ui-fabric-react';
+import { IStyle } from "office-ui-fabric-react";
 
-export interface IPageLayoutProps {}
+export interface IPageLayoutProps { }
 export interface IPageLayoutStyles {
   root: IStyle;
   header: IStyle;

@@ -1,22 +1,22 @@
 const CustomerNames = [
-  'Alma Binford',
-  'Mariann Peppler',
-  'Floy Hallowell',
-  'Bambi Chew',
-  'Lillie Teeters',
-  'Odilia Decola',
-  'Dannie Bennette',
-  'Donetta Fomby',
-  'Earl Racine',
-  'Sharron Tollison',
-  'Cindi Garst',
-  'Deandre Meaders',
-  'Rufina Oesterling',
-  'Lyda Dollinger',
-  'Maisha Liebel',
-  'Olimpia Lampkins',
-  'Lonnie Haines',
-  'Erika Birk'
+  "Alma Binford",
+  "Mariann Peppler",
+  "Floy Hallowell",
+  "Bambi Chew",
+  "Lillie Teeters",
+  "Odilia Decola",
+  "Dannie Bennette",
+  "Donetta Fomby",
+  "Earl Racine",
+  "Sharron Tollison",
+  "Cindi Garst",
+  "Deandre Meaders",
+  "Rufina Oesterling",
+  "Lyda Dollinger",
+  "Maisha Liebel",
+  "Olimpia Lampkins",
+  "Lonnie Haines",
+  "Erika Birk"
   // 'Angle Salem',
   // 'Wilda Brandy',
   // 'Lavone Glidewell',
@@ -51,9 +51,14 @@ const CustomerNames = [
   // 'Sunni Pion'
 ];
 
-const LoremWords = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'.split(
-  ' '
-);
+const LoremWords = (
+  `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ` +
+  `incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ` +
+  `exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute ` +
+  `irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla ` +
+  `pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia ` +
+  `deserunt mollit anim id est laborum`
+).split(" ");
 
 export const getRandomText = (wordCount: number): string => {
   let text = [];
@@ -61,7 +66,7 @@ export const getRandomText = (wordCount: number): string => {
   for (let i = 0; i < wordCount; i++) {
     text.push(LoremWords[Math.floor(Math.random() * LoremWords.length)]);
   }
-  return text.join(' ');
+  return text.join(" ");
 };
 
 const getRandomFlag = (): boolean => !!Math.floor(2 * Math.random());
@@ -74,7 +79,7 @@ export const ChatListData = CustomerNames.map(name => ({
     prescense: Math.floor(5 * Math.random())
   },
   lastMessage: getRandomText(3 + Math.floor(15 * Math.random())),
-  lastModified: '3:30pm',
+  lastModified: "3:30pm",
   skype: getRandomFlag()
 }));
 

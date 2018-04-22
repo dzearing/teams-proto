@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   ITheme,
   IStyle,
@@ -7,10 +7,10 @@ import {
   PivotItem,
   Icon,
   FontWeights
-} from 'office-ui-fabric-react';
-import { Divider, RoundButton } from '../index';
-import { createComponent } from '../../utilities/createComponent';
-import { SingleLineText } from '../../utilities/commonStyles';
+} from "office-ui-fabric-react";
+import { Divider, RoundButton } from "../index";
+import { createComponent, SingleLineText } from "../../utilities";
+import {} from "../../utilities";
 
 export interface IChatContentHeaderProps {
   className?: string;
@@ -36,10 +36,10 @@ export const view = (
         <PersonaCoin className={styles.persona} size={3} />
         <span className={styles.name}>Name of person</span>
         <div className={styles.buttonArea}>
-          <RoundButton emphasized>
+          <RoundButton primary>
             <Icon iconName="video" />
           </RoundButton>
-          <RoundButton emphasized>
+          <RoundButton primary>
             <Icon iconName="phone" />
           </RoundButton>
           <RoundButton>
@@ -57,21 +57,22 @@ export const view = (
   );
 };
 
-export const styles = (
+export const getStyles = (
   props: IChatContentHeaderProps & { theme: ITheme }
 ): IChatContentHeaderStyles => {
-  const { theme } = props;
+  const { theme, className } = props;
+  const { fonts } = theme;
   return {
     root: [
       {
         marginTop: 12
       },
-      props.className
+      className
     ],
     nameArea: [
       {
-        display: 'flex',
-        alignItems: 'center'
+        display: "flex",
+        alignItems: "center"
       }
     ],
     persona: [
@@ -80,7 +81,7 @@ export const styles = (
       }
     ],
     name: [
-      theme.fonts.xLarge,
+      fonts.xLarge,
       SingleLineText,
       {
         flexGrow: 1,
@@ -90,11 +91,11 @@ export const styles = (
     ],
     buttonArea: [
       {
-        display: 'flex',
-        flexWrap: 'nowrap',
+        display: "flex",
+        flexWrap: "nowrap",
         margin: -4,
         selectors: {
-          '& > *': {
+          "& > *": {
             margin: 4
           }
         }
@@ -107,7 +108,7 @@ export const ChatContentHeader = createComponent<
   IChatContentHeaderProps,
   IChatContentHeaderStyles
 >({
-  scope: 'ChatContentHeader',
-  styles,
-  view
+  scope: "ChatContentHeader",
+  view,
+  styles: getStyles
 });

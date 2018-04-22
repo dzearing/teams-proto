@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { RefObject } from 'office-ui-fabric-react';
+import * as React from "react";
+import { RefObject } from "office-ui-fabric-react";
 
 export interface IWithScrollEventingOptions<TProps> {
   scrollRef: RefObject<HTMLElement>;
@@ -10,7 +10,7 @@ export const withScrollEventing = <TProps>({
   component
 }: IWithScrollEventingOptions<TProps>) => {
   class WithScrollEventing extends React.Component {
-    public static displayName = component.displayName;
+    public static displayName = (component as { displayName: string }).displayName;
 
     public render() {
       return this.props.children;
@@ -19,14 +19,14 @@ export const withScrollEventing = <TProps>({
   return WithScrollEventing;
 };
 
-class StateComponent {
-  public setState(state): void {}
+class StateProvider<TProps, TState> {
+  public setState(state: <TState>): void { /* noop*/ }
 }
 
-class ScrollState extends StateComponent {
+class ScrollState extends StateProvider {
 
   public getState() {
-    return {      
+    return {
       onScroll: this._onScroll
     };
   }
@@ -49,17 +49,5 @@ class ScrollState extends StateComponent {
       clientWidth,
       clientHeight
     });
-  };
-}
-
-class TimerState extends StateComponent {
-  private _intervalId: number;
-
-  public componentDidMount() {
-    this._intervalId = setInterval(() => {
-      this.setState({
-        date: new Date().toDateString()
-      });
-    }, 1000);
   }
 }

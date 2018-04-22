@@ -4,8 +4,9 @@
   "private": true,
   "main": "src/index.tsx",
   "dependencies": {
+    "@types/prop-types": "^15.5.2",
     "@uifabric/icons": "latest",
-    "office-ui-fabric-react": "5.82.3",
+    "office-ui-fabric-react": "5.82.4",
     "react": "16.3.2",
     "react-dom": "^16.2.0",
     "react-scripts-ts": "^2.13.0"
@@ -18,9 +19,8 @@
   },
   "devDependencies": {
     "@types/jest": "22.2.2",
-    "@types/node": "9.6.2",
-    "@types/react": "16.3.5",
-    "@types/react-dom": "16.0.4",
+    "@types/react": "^16.3.11",
+    "@types/react-dom": "^16.0.5",
     "typescript": "^2.7.2"
   },
   "keywords": [],

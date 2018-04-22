@@ -1,5 +1,5 @@
-import { IPageLayoutStyles } from './PageLayout.types';
-import { ITheme } from 'office-ui-fabric-react';
+import { IPageLayoutStyles } from "./PageLayout.types";
+import { ITheme } from "office-ui-fabric-react";
 
 export const getStyles = (props: { theme: ITheme }): IPageLayoutStyles => {
   const { palette } = props.theme;
@@ -7,12 +7,12 @@ export const getStyles = (props: { theme: ITheme }): IPageLayoutStyles => {
   return {
     root: [
       {
-        display: 'flex',
-        flexDirection: 'column',
-        jusifyContent: 'stretch',
-        alignItems: 'stretch',
-        width: '100vw',
-        height: '100vh'
+        display: "flex",
+        flexDirection: "column",
+        // jusifyContent: "stretch",
+        alignItems: "stretch",
+        width: "100vw",
+        height: "100vh"
       }
     ],
 
@@ -26,12 +26,12 @@ export const getStyles = (props: { theme: ITheme }): IPageLayoutStyles => {
 
     content: [
       {
-        display: 'flex',
-        justifyContent: 'stretch',
-        alignItems: 'stretch',
+        display: "flex",
+        // justifyContent: "stretch",
+        alignItems: "stretch",
         flexGrow: 1,
-        minHeight: '55px',
-        width: '100%'
+        minHeight: "55px",
+        width: "100%"
       }
     ],
 
@@ -47,7 +47,7 @@ export const getStyles = (props: { theme: ITheme }): IPageLayoutStyles => {
       {
         width: 300,
         flexShrink: 0,
-        position: 'relative'
+        position: "relative"
       }
     ],
 

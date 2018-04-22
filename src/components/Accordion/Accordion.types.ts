@@ -1,11 +1,14 @@
-import * as React from 'react';
-import { RefObject } from 'office-ui-fabric-react';
+import * as React from "react";
+import { RefObject } from "office-ui-fabric-react";
 
 export interface IAccordionTitleProps {
   focusElementRef?: RefObject<HTMLElement>;
   collapsed?: boolean;
   onToggleCollapse?: () => void;
   onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
+  indent?: number;
+  noChevron?: boolean;
+  text?: string;
 }
 
 export interface IAccordionProps {
@@ -13,5 +16,5 @@ export interface IAccordionProps {
   defaultCollapsed?: boolean;
   collapsed?: boolean;
   titleAs: React.ReactType<IAccordionTitleProps>;
-  titleProps?: any;
+  titleProps?: {};
 }

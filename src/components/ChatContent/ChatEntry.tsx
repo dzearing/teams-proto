@@ -1,12 +1,12 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   ITheme,
   IStyle,
   PersonaCoin,
   IPersonaProps,
   getFocusStyle
-} from 'office-ui-fabric-react';
-import { createComponent } from '../../utilities/createComponent';
+} from "office-ui-fabric-react";
+import { createComponent } from "../../utilities/createComponent";
 
 export interface IChatEntryProps {
   className?: string;
@@ -65,22 +65,22 @@ export const view = (
   );
 };
 
-export const styles = (
+export const getStyles = (
   props: IChatEntryProps & { theme: ITheme }
 ): IChatEntryStyles => {
   const { theme, received } = props;
   return {
     root: [
       {
-        display: 'flex',
-        flexDirection: received ? 'row' : 'row-reverse'
+        display: "flex",
+        flexDirection: received ? "row" : "row-reverse"
       },
       props.className
     ],
     persona: [
       {
-        display: 'flex',
-        justifyContent: received ? 'flex-start' : 'flex-end',
+        display: "flex",
+        justifyContent: received ? "flex-start" : "flex-end",
         paddingTop: 8,
         width: 38,
         flexShrink: 0
@@ -90,14 +90,14 @@ export const styles = (
     messageArea: [
       getFocusStyle(theme),
       {
-        boxShadow: `0 0 6px 0 rgba(0,0,0,${received ? '.1' : '.2'})`,
-        display: 'block',
-        textAlign: 'left',
-        border: 'none',
-        margin: '2px 0',
-        marginLeft: received ? 0 : '10vw',
-        marginRight: received ? '10vw' : 0,
-        padding: '8px 16px',
+        boxShadow: `0 0 6px 0 rgba(0,0,0,${received ? ".1" : ".2"})`,
+        display: "block",
+        textAlign: "left",
+        border: "none",
+        margin: "2px 0",
+        marginLeft: received ? 0 : "10vw",
+        marginRight: received ? "10vw" : 0,
+        padding: "8px 16px",
         borderRadius: 4,
         backgroundColor: received
           ? theme.palette.white
@@ -106,7 +106,7 @@ export const styles = (
     ],
     headerArea: [
       {
-        display: 'flex',
+        display: "flex",
         marginBottom: 4
       }
     ],
@@ -128,7 +128,7 @@ export const styles = (
 };
 
 export const ChatEntry = createComponent<IChatEntryProps, IChatEntryStyles>({
-  scope: 'ChatEntry',
-  styles,
+  scope: "ChatEntry",
+  styles: getStyles,
   view
 });

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { IPageLayoutProps, IPageLayoutStyles } from './PageLayout.types';
+import * as React from "react";
+import { IPageLayoutProps, IPageLayoutStyles } from "./PageLayout.types";
 
-import { Header, SideNav, ChatList, ChatContent } from '../index';
+import { ChatList, ChatContent } from "../index";
 
 export const PageLayoutView = (
   props: IPageLayoutProps & {
@@ -11,14 +11,14 @@ export const PageLayoutView = (
   const { styles } = props;
 
   return (
-    <div className={styles.root}>
-      <div className={styles.header} />
-      <div className={styles.content}>
-        <div className={styles.sideNav} />
-        <div className={styles.chatList}>
+    <div className={ styles.root }>
+      <div className={ styles.header } />
+      <div className={ styles.content }>
+        <div className={ styles.sideNav } />
+        <div className={ styles.chatList }>
           <ChatList />
         </div>
-        <ChatContent className={styles.chatContent} />
+        <ChatContent className={ styles.chatContent } />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
-import { IAccordionTitleProps } from "./AccordionTitle.types";
+import { IAccordionTitleProps, IAccordionTitleStyles } from "./AccordionTitle.types";
 import { ITheme, getFocusStyle } from "office-ui-fabric-react";
 
-export const getStyles = (props: IAccordionTitleProps & { theme: ITheme }) => {
+export const getStyles = (props: IAccordionTitleProps & { theme: ITheme }): IAccordionTitleStyles => {
   const { theme } = props;
 
   return {

@@ -1,14 +1,12 @@
-import * as React from 'react';
-import { IPageLayoutProps, IPageLayoutStyles } from './PageLayout.types';
+import * as React from "react";
+import { ISideNavProps, ISideNavStyles } from "./SideNav.types";
 
-import { Header, SideNav, ChatList, ChatContent } from '../index';
-
-export const PageLayoutView = (
-  props: IPageLayoutProps & {
-    styles: { [key in keyof IPageLayoutStyles]: string };
+export const SideNavView = (
+  props: ISideNavProps & {
+    styles: { [key in keyof ISideNavStyles]: string };
   }
 ) => {
   const { styles } = props;
 
-  return <div className={styles.root} />;
+  return <div className={ styles.root } />;
 };

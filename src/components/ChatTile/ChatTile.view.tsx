@@ -1,17 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   PersonaCoin,
   PersonaPresence,
-  Icon,
-  IClassNames
-} from 'office-ui-fabric-react';
-import { IChatTileProps, IChatTileStyles } from './ChatTile.types';
+  PersonaSize,
+  Icon
+} from "office-ui-fabric-react";
+import { IChatTileProps, IChatTileStyles } from "./ChatTile.types";
+import { IStylesFor } from "../../utilities";
 
 const SkypeImageUrl =
-  '//upload.wikimedia.org/wikipedia/commons/c/c3/Microsoft_Skype_for_Business_logo.svg';
+  "//upload.wikimedia.org/wikipedia/commons/c/c3/Microsoft_Skype_for_Business_logo.svg";
 
 export const ChatTileView = (
-  props: IChatTileProps & IClassNames<IChatTileStyles>
+  props: IChatTileProps & IStylesFor<IChatTileStyles>
 ) => {
   const { styles, personaProps } = props;
 
@@ -19,8 +20,8 @@ export const ChatTileView = (
     <button className={styles.root}>
       <div className={styles.thumbArea}>
         <PersonaCoin
-          {...personaProps}
-          size={2}
+          {...personaProps as {}}
+          size={PersonaSize.size24}
           presence={PersonaPresence.away}
         />
       </div>

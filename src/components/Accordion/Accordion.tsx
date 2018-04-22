@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { IAccordionProps } from './Accordion.types';
-import { createRef } from 'office-ui-fabric-react';
+import * as React from "react";
+import { IAccordionProps } from "./Accordion.types";
+import { createRef } from "office-ui-fabric-react";
 
 export interface IAccordionState {
   collapsed: boolean;
@@ -9,7 +9,7 @@ export interface IAccordionState {
 export class Accordion extends React.Component<
   IAccordionProps,
   IAccordionState
-> {
+  > {
   private _titleElement = createRef<HTMLElement>();
 
   constructor(props: IAccordionProps) {
@@ -27,22 +27,22 @@ export class Accordion extends React.Component<
     const { collapsed } = this.state;
 
     return (
-      <div className={className} onKeyDown={this._onRootKeyDown}>
+      <div className={ className } onKeyDown={ this._onRootKeyDown }>
         <TitleType
-          {...titleProps}
-          focusElementRef={this._titleElement}
-          collapsed={collapsed}
-          onToggleCollapse={this._onToggleCollapse}
-          onKeyDown={this._onKeyDown}
+          { ...titleProps }
+          focusElementRef={ this._titleElement }
+          collapsed={ collapsed }
+          onToggleCollapse={ this._onToggleCollapse }
+          onKeyDown={ this._onKeyDown }
         />
-        {!collapsed && children}
+        { !collapsed && children }
       </div>
     );
   }
 
   _onRootKeyDown = (ev: React.KeyboardEvent<Element>) => {
     switch (ev.which) {
-      case 37: {
+      case 37:
         if (
           ev.target !== this._titleElement.value &&
           this._titleElement.value
@@ -51,13 +51,16 @@ export class Accordion extends React.Component<
           ev.preventDefault();
           ev.stopPropagation();
         }
-      }
+        break;
+
+      default:
+        break;
     }
-  };
+  }
 
   _onToggleCollapse = () => {
     this.setState(state => ({ collapsed: !state.collapsed }));
-  };
+  }
 
   _onKeyDown = (ev: React.KeyboardEvent<Element>) => {
     const { collapsed } = this.state;
@@ -83,5 +86,5 @@ export class Accordion extends React.Component<
 
     ev.preventDefault();
     ev.stopPropagation();
-  };
+  }
 }
